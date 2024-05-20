@@ -1,0 +1,160 @@
+.navBar {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding: 10px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  justify-content: space-between;
+  display: flex;
+}
+.navBar.footer{
+  height: 80px;
+  padding: 30px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+}
+.navBar.footer .logo{
+  margin-left: 40px;
+}
+.navBar .navLeft {
+  position: relative;
+  width: 60%;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  height: 100%;
+}
+.navLeft .logo {
+  height: 80%;
+}
+.navBar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: medium;
+}
+.navRight a {
+  font-size: small;
+}
+.bgLink {
+  margin: 0 10px;
+  padding: 7px 15px;
+  font-size: small;
+  background: linear-gradient(45deg, #465ab9, #6440d6);
+  border-radius: 15px;
+}
+.mobileNav {
+  position: absolute;
+  right: 10px;
+  height: 100%;
+  align-items: end;
+  display: none;
+}
+.mobileNav button {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  background: none;
+  border: none;
+  outline: none;
+}
+.mobileNav button img {
+  width: 100%;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(168deg)
+    brightness(103%) contrast(100%);
+}
+.mobileNav .mobileLink {
+  display: none;
+}
+.mobileLink.show {
+  position: fixed;
+  right: 0;
+  padding-right: 40px;
+  background: #0a0c21;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  width: 30%;
+  height: 100%;
+  margin-top: 40px;
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+}
+.mobileLink .ML {
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .navBar {
+    height: 40px;
+    padding: 7px 20px;
+  }
+  .navBar a {
+    font-size: small;
+  }
+  .navRight a {
+    font-size: x-small;
+  }
+  .bgLink {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: xx-small;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navBar .navLeft {
+    width: auto;
+  }
+  .navLeft a {
+    margin: 0 5px;
+  }
+  .navBar {
+    height: 40px;
+    padding: 7px 20px;
+  }
+  .navBar a {
+    font-size: small;
+  }
+  .navRight a {
+    font-size: x-small;
+  }
+  .bgLink {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: xx-small;
+    border-radius: 10px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .navBar {
+    padding-right: 50px;
+  }
+  .navLeft a {
+    display: none;
+  }
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobileNav button {
+    height: 25px;
+    width: 25px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .mobileLink.show {
+    margin-top: 37px;
+    padding-right: 40px;
+    background: #0a0c21;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .navBar {
+    padding: 5px 15px;
+    padding-right: 30px;
+  }
+  .navLeft .logo {
+    height: 50%;
+  }
+}

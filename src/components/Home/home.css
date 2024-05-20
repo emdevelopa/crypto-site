@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+--root{
+    --bg1: "#0a0c21";
+    --bg2: "#131432";
+    --cl1: "#465ab9";
+    --cl2: "#6440d6";
+}
+.Home{
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(#0a0c21, #131432);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.Home::-webkit-scrollbar{
+    -webkit-appearance: none;
+}

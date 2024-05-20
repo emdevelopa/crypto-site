@@ -1,0 +1,43 @@
+.HomeComp{
+    width: 100%;
+    height: fit-content;
+    padding: 50px 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient( rgba(0, 255, 204, 0.09), transparent, transparent);
+}
+.HomeComp .affiliate{
+    color: #fff;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 5px 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    width: fit-content;
+}
+.HomeComp h2{
+    font-size: 4em;
+    color: #fff;
+}
+.biggerH2{
+    font-size: 5em;
+}
+.HomeComp p{
+    margin: 40px 0;
+    font-size: x-large;
+    color: rgba(255, 255, 255, 0.5);
+}
+.HomeComp .pic{
+    width: 80%;
+    margin: 30px 0;
+}
+.HomeComp .start{
+    margin: 30px 0 50px 0;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: linear-gradient(45deg, #00ffcc, #6440d6);
+}

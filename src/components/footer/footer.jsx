@@ -1,5 +1,14 @@
-function Home() {
-  return <h2 style={{ color: "red" }}>Home Page</h2>;
-}
+import React from "react";
+import logoPng from "../../assets/logo_white.png";
 
-export default Home;
+const Footer = () => {
+  return (
+    <>
+      <div className="navBar footer">
+        <img className="logo" src={logoPng} alt="" />
+      </div>
+    </>
+  );
+};
+
+export default Footer;
