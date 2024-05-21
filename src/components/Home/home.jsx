@@ -6,6 +6,7 @@ import HomeComp2 from '../homeComponent/homeComp2'
 import HomeComp3 from '../homeComponent/homeComp3'
 import HomeComp4 from '../homeComponent/homeComp4'
 import Footer from '../footer/footer'
+import Payment from '../payment/payment'
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <HomeComp2/>
       <HomeComp3/>
       <HomeComp4/>
+      <Payment/>
       <Footer/>
     </div>
     </>

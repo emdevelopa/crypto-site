@@ -29,7 +29,7 @@ const Navbar = () => {
         </div>
         <div className="navRight">
           <a href="#">Log in</a>
-          <a href="/sign-up" className="bgLink">
+          <a href="#" className="bgLink">
             Sign up
           </a>
         </div>

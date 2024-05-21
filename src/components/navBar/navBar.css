@@ -7,13 +7,13 @@
   justify-content: space-between;
   display: flex;
 }
-.navBar.footer{
+.navBar.footer {
   height: 80px;
   padding: 30px 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   border-bottom: none;
 }
-.navBar.footer .logo{
+.navBar.footer .logo {
   margin-left: 40px;
 }
 .navBar .navLeft {
@@ -48,6 +48,9 @@
   height: 100%;
   align-items: end;
   display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 .mobileNav button {
   height: 40px;
@@ -133,6 +136,9 @@
     display: none;
   }
   .mobileNav {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
     display: flex;
     flex-direction: column;
   }
