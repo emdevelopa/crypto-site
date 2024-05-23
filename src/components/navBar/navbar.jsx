@@ -28,8 +28,8 @@ const Navbar = () => {
           <a href="#" className="PCL">Pricing</a>
         </div>
         <div className="navRight">
-          <a href="#">Log in</a>
-          <a href="#" className="bgLink">
+          <a href="sign-in">Log in</a>
+          <a href="sign-up" className="bgLink">
             Sign up
           </a>
         </div>

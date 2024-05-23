@@ -16,8 +16,8 @@ function App() {
         <Route path="/" element={<Dashboard />} /> {/* Home route */}
         <Route path="/" element={<Profile />} /> {/* Home route */}
         <Route path="/" element={<Forgot />} /> {/* Home route */}
-        <Route path="/" element={<SignIn />} /> {/* Home route */}
-        <Route path="/" element={<SignUp />} /> {/* Home route */}
+        <Route path="sign-in" element={<SignIn />} /> {/* Home route */}
+        <Route path="sign-up" element={<SignUp />} /> {/* Home route */}
         {/* <Route path="/about" element={<About />} /> */}
         {/* <Route path="*" element={<NotFound />} />{" "} */}
         {/* Catch-all for unknown routes */}
