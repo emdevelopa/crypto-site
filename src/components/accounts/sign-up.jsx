@@ -9,6 +9,18 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
   const form = useRef();
+  const formRef = form.current;
+
+  const addTokenToForm = (form, token) => {
+    let tokenInput = form.querySelector('input[name="token"]');
+    if (!tokenInput) {
+      tokenInput = document.createElement("input");
+      tokenInput.type = "hidden";
+      tokenInput.name = "token";
+      form.appendChild(tokenInput);
+    }
+    tokenInput.value = token;
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -28,14 +40,16 @@ const SignUp = () => {
         }
       );
       console.log(response);
-      if (response.ok) {
+      if (response.status === 200) {
+        addTokenToForm(formRef, response.data.token);
+
         emailjs
-          .sendForm("service_xdedwab", "template_ay7g99m", form.current, {
+          .sendForm("service_xdedwab", "template_ay7g99m", formRef, {
             publicKey: "AcBnCP-k-O6JagINR",
           })
           .then(
-            () => {
-              console.log("SUCCESS!");
+            (response) => {
+              console.log("SUCCESS!", response);
             },
             (error) => {
               console.log("FAILED...", error.text);
@@ -51,6 +65,8 @@ const SignUp = () => {
     } catch (err) {
       console.log(err);
       setError("Sign-up failed");
+    } finally {
+      console.log("loading completed");
     }
   };
 
