@@ -3,7 +3,7 @@ import "./dashboard.css";
 import UserPic from "../../assets/user.jpg";
 
 const Dashboard = () => {
-  const [isPopupVisible, setIsPopupVisible] = useState(flse);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
