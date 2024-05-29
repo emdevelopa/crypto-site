@@ -13,11 +13,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} /> {/* Home route */}
-        <Route path="/" element={<Dashboard />} /> {/* Home route */}
+        <Route path="/dashboard" element={<Dashboard />} /> {/* Home route */}
         <Route path="/" element={<Profile />} /> {/* Home route */}
         <Route path="/" element={<Forgot />} /> {/* Home route */}
-        <Route path="sign-in" element={<SignIn />} /> {/* Home route */}
-        <Route path="sign-up" element={<SignUp />} /> {/* Home route */}
+        <Route path="/login" element={<SignIn />} /> {/* Home route */}
+        <Route path="/register" element={<SignUp />} /> {/* Home route */}
         {/* <Route path="/about" element={<About />} /> */}
         {/* <Route path="*" element={<NotFound />} />{" "} */}
         {/* Catch-all for unknown routes */}

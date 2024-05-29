@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import shortLogo from "../../assets/symbol_white.svg";
+import "./signInOut.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -55,49 +57,35 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form
-        ref={form}
-        onSubmit={handleSignUp}
-        className="w-1/3 bg-white p-6 rounded shadow-md"
-      >
-        <h1 className="text-2xl mb-4">Sign In</h1>
+    <div className="signBox">
+      <img src={shortLogo} alt="" className="signLogo" />
+      <h4 className="signTopic">Log in to Prime</h4>
+      <form ref={form} onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
         {msg && <p className="text-green-600">{msg}</p>}
-        <div className="mb-4">
-          <label className="block text-gray-700">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            name="user_email"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            required
-          />
-        </div>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="user_email"
+          placeholder="Enter your email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
+          required
+        />
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
-        >
-          Sign In
-        </button>
-        <p className="mt-1">
+        <button type="submit">Sign In</button>
+        <span className="signSpan">
           Don't have an account yet?{" "}
-          <a href="sign-up" className="text-blue-800 underline">
+          <a href="sign-up" className="signSpan">
             Register
           </a>
-        </p>
+        </span>
       </form>
     </div>
   );
