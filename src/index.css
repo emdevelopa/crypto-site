@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
->>>>>>> 537ce977e59b4a62c1516f1e4021b9569c55dd43
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
