@@ -13,7 +13,7 @@ const Dashboard = () => {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-left font-bold text-3xl">Dashboard</h1>
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
-            Logout
+            Logoutt
           </button>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
