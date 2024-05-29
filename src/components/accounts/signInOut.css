@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.signBox {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #292b3a, #1a1a24);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow: none;
+}
+.signLogo {
+  width: 80px;
+}
+.signTopic {
+  color: #cad7df;
+  font-size: large;
+  margin: 30px;
+}
+.signBox form {
+  width: 100%;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.signBox form input {
+  width: 350px;
+  margin-bottom: 15px;
+  color: #6a6a76;
+  padding: 13px;
+  border-radius: 3px;
+  border: 1px solid #6a6a76;
+  background: #161622;
+  outline: none;
+}
+.signBox form input:active {
+  outline: 1px solid #00ffcc;
+}
+.signBox button {
+  cursor: pointer;
+  width: 350px;
+  padding: 8px;
+  font-size: small;
+  border-radius: 3px;
+  border: 0.5px solid #6a6a76;
+  color: #fff;
+  background: #272938;
+  margin-bottom: 30px;
+}
+.signBox span,
+.signBox a {
+  font-size: small;
+  color: #6a6a76;
+  text-decoration: none;
+}
+.signBox a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 450px) {
+  .signBox form {
+    width: 100%;
+  }
+  .signBox form input,
+  .signBox form button {
+    width: 90%;
+    font-size: small;
+  }
+}

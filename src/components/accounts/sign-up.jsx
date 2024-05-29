@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import shortLogo from "../../assets/symbol_white.svg";
+import "./signInOut.css";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -71,58 +73,41 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form
-        ref={form}
-        onSubmit={handleSignUp}
-        className="w-1/3 bg-white p-6 rounded shadow-md"
-      >
-        <h1 className="text-2xl mb-4">Sign Up</h1>
+    <div className="signBox">
+      <img src={shortLogo} alt="" className="signLogo" />
+      <h4 className="signTopic">Create your Prime account</h4>
+      <form ref={form} onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
         {msg && <p className="text-green-600">{msg}</p>}
-        <div className="mb-4">
-          <label className="block text-gray-700">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            name="user_email"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Confirm Password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
-        >
-          Sign Up
-        </button>
-        <p className="mt-1">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="user_email"
+          placeholder="Enter your email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
+          required
+        />
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm your password"
+          required
+        />
+        <button type="submit">Sign Up</button>
+        <span className="signSpan">
           Already have an account yet?{" "}
-          <a href="sign-in" className="text-blue-800 underline">
+          <a href="sign-in" className="signSpan">
             login here
           </a>
-        </p>
+        </span>
       </form>
     </div>
   );
