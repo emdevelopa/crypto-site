@@ -98,7 +98,7 @@ const SignIn = () => {
         <button type="submit">Sign In</button>
         <span className="signSpan">
           Don't have an account yet?{" "}
-          <a href="sign-up" className="signSpan">
+          <a href="register" className="signSpan">
             Register
           </a>
         </span>

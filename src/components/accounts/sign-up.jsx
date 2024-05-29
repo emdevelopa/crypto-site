@@ -104,7 +104,7 @@ const SignUp = () => {
         <button type="submit">Sign Up</button>
         <span className="signSpan">
           Already have an account yet?{" "}
-          <a href="sign-in" className="signSpan">
+          <a href="login" className="signSpan">
             login here
           </a>
         </span>
