@@ -1,6 +1,6 @@
 import React from "react";
 import "./homeComp.css";
-import pic from "../../assets/insights.svg";
+import pic from "../../assets/image00.png";
 
 const HomeComp3 = () => {
   return (
