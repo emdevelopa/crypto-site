@@ -5,17 +5,15 @@ import menuSvg from "../../assets/burger-advanced-svgrepo-com.svg";
 import { useState } from "react";
 
 const Navbar = () => {
-  
-  const [isNavOpen, setIsNavOpen] = useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  const handleNav = () =>{
+  const handleNav = () => {
     if (isNavOpen === false) {
       setIsNavOpen(true);
-    }
-    else {
+    } else {
       setIsNavOpen(false);
     }
-  }
+  };
   return (
     <>
       <div className="navBar">
