@@ -10,21 +10,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
-      <div className="w-full max-w-4xl">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-left font-bold text-3xl">Dashboard</h1>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
-            Logout
-          </button>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
-          <div className="w-16 h-16 rounded-full bg-gray-800 flex justify-center items-center mx-auto mb-4">
-            <h1 className="font-bold text-[50px] text-orange-500">O</h1>
-          </div>
-          <p className="text-gray-700 mb-4">
-            Hi olatunbossemma17@gmail.com, welcome to your dashboard
-          </p>
+    <div className="dashBox">
+      <h1 className="topTxt">Dashboard</h1>
+      <div className="profileBox">
+        <button className="logout">Logout</button>
+        <img src={UserPic} alt="" />
+        <div className="userInfo">
+          <p className="prelude">Hi,</p>
+          <h2 className="userName">UserName</h2>
 
           <p className="subInfo">
             Click the subscribe button to subscribe to discord server.
