@@ -24,10 +24,20 @@ const SignUp = () => {
     tokenInput.value = token;
   };
 
+  const clearMessages = (msg) => {
+    setTimeout(() => {
+      if (msg === "success") {
+        setMsg("")
+      } else {
+        setError("")
+      }
+    }, 8000);
+  };
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      clearMessages("error");
       return;
     }
     try {
@@ -51,6 +61,8 @@ const SignUp = () => {
           })
           .then(
             (response) => {
+              setMsg("verification link sent to Email");
+              clearMessages("success");
               console.log("SUCCESS!", response);
             },
             (error) => {
@@ -62,11 +74,14 @@ const SignUp = () => {
       // const token = response.data.token;
       // localStorage.setItem("token", token);
 
-      setMsg(response.data.msg);
+      // console.log(response.data.msg);
       // handle success (e.g., redirect to login page or show a success message)
     } catch (err) {
       console.log(err);
-      setError("Sign-up failed");
+      setError(err?.response.data.message);
+      clearMessages("error");
+
+      // setError("Sign-up failed");
     } finally {
       console.log("loading completed");
     }

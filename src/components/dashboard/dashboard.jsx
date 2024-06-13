@@ -1,23 +1,34 @@
 import React, { useState } from "react";
 import "./dashboard.css";
 import UserPic from "../../assets/user.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+
+  const navigate = useNavigate()
 
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
 
+  const signOut=() => {
+    navigate("/login")
+  }
+
   return (
     <div className="dashBox">
       <h1 className="topTxt">Dashboard</h1>
       <div className="profileBox">
-        <button className="logout">Logout</button>
-        <img src={UserPic} alt="" />
+        <button className="logout" onClick={signOut}>Logout</button>
+        {/* <img src={UserPic} alt="" /> */}
+        <div className="w-[8em] h-[8em] rounded bg-black flex items-center justify-center">
+          <h1 className="text-orange-500 font-bold text-[75px]">O</h1>
+        </div>
         <div className="userInfo">
           <p className="prelude">Hi,</p>
-          <h2 className="userName">UserName</h2>
+          <h2 className="userName">Olatunbossemma17@gmail.com</h2>
 
           <p className="subInfo">
             Click the subscribe button to subscribe to discord server.
