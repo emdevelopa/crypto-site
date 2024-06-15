@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import successful from "../../assets/successful.png";
+import failed from "../../assets/failed.png";
 
-const MyComponent = () => {
+const Verify = () => {
   const [message, setMessage] = useState("Loading...");
+  const [success, setSuccess] = useState(false);
 
   // Function to fetch data
   const fetchData = async () => {
@@ -17,15 +20,19 @@ const MyComponent = () => {
         );
         if (response.data.message === "verification successful") {
           setMessage("Verification successful");
+          setSuccess(true);
         } else {
           setMessage(response.data.message);
+          setSuccess(false);
         }
       } catch (error) {
         console.error(error);
         setMessage("Failed to process token.");
+        setSuccess(false);
       }
     } else {
       setMessage("No token found in the URL.");
+      setSuccess(false);
     }
   };
 
@@ -37,7 +44,16 @@ const MyComponent = () => {
     };
   }
 
-  return <div>{message}</div>;
+  return (
+    <div className="h-[100vh] bg-[#1a1a24] flex flex-col items-center justify-center">
+      {success ? (
+        <img src={successful} alt="checked" className="w-[4em]" />
+      ) : (
+        <img src={failed} alt="failed" className="w-[4em]" />
+      )}
+      <p className="text-white">{message}</p>
+    </div>
+  );
 };
 
-export default MyComponent;
+export default Verify;
