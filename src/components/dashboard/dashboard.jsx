@@ -10,11 +10,11 @@ function useQuery() {
 
 const Dashboard = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const query = useQuery();
-
-  const tok = query.get("tok");
-
+  const [email, setEmail] = useState("loading...");
   const navigate = useNavigate();
+
+  const query = useQuery();
+  const tok = query.get("tok");
 
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
@@ -37,6 +37,7 @@ const Dashboard = () => {
       );
       if (response.status === 200) {
         console.log(response);
+        setEmail(response.data.userInfo.email);
         // logintoDashboard(response.data.id);
         // addTokenToForm(formRef, token);
 
@@ -79,11 +80,13 @@ const Dashboard = () => {
         </button>
         {/* <img src={UserPic} alt="" /> */}
         <div className="w-[8em] h-[8em] rounded bg-black flex items-center justify-center">
-          <h1 className="text-orange-500 font-bold text-[75px]">O</h1>
+          <h1 className="text-orange-500 font-bold text-[75px]">
+            {email.slice(0, 1).toUpperCase()}
+          </h1>
         </div>
         <div className="userInfo">
           <p className="prelude">Hi,</p>
-          <h2 className="userName">Olatunbossemma17@gmail.com</h2>
+          <h2 className="userName">{email}</h2>
 
           <p className="subInfo">
             Click the subscribe button to subscribe to discord server.

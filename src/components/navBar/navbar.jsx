@@ -1,6 +1,6 @@
 import React from "react";
 import "./navBar.css";
-import logoPng from "../../assets/logo_white.png";
+import logoPng from "../../assets/traderAY.jpeg";
 import menuSvg from "../../assets/burger-advanced-svgrepo-com.svg";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ const Navbar = () => {
     <>
       <div className="navBar">
         <div className="navLeft">
-          <img className="logo" src={logoPng} alt="" />
+          <img className="loo w-[10em]" src={logoPng} alt="" />
           <a href="#" className="PCL">
             Mentorship
           </a>
