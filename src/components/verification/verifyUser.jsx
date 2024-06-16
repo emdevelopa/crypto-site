@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import successful from "../../assets/successful.png";
 import failed from "../../assets/failed.png";
@@ -7,13 +7,12 @@ import { useLocation } from "react-router-dom";
 const Verify = () => {
   const [message, setMessage] = useState("Loading...");
   const [success, setSuccess] = useState(false);
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-  // Function to fetch data
-  const urlParams = useQuery();
-  const fetchData = async () => {
-    const token = urlParams.get("tok");
+
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  };
+
+  const fetchData = async (token) => {
     if (token) {
       try {
         const response = await axios.post(
@@ -40,13 +39,11 @@ function useQuery() {
     }
   };
 
-  // Setting up window.onload to run fetchData once
-  if (typeof window !== "undefined" && !window.fetchDataLoaded) {
-    window.onload = () => {
-      fetchData();
-      window.fetchDataLoaded = true; // Ensure it only runs once
-    };
-  }
+  useEffect(() => {
+    const urlParams = useQuery();
+    const token = urlParams.get("tok");
+    fetchData(token);
+  }, []); // Empty dependency array means this effect runs once when the component mounts
 
   return (
     <div className="h-[100vh] bg-[#1a1a24] flex flex-col items-center justify-center">
