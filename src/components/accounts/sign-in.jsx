@@ -39,7 +39,8 @@ const SignIn = () => {
     // }
     try {
       const response = await axios.post(
-        "http://localhost:3008/login",
+        "https://server-theta-pink.vercel.app/login",
+        // "http://localhost:3008/login",
         {
           email,
           password,

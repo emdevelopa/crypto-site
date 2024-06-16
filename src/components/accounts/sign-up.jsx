@@ -27,9 +27,9 @@ const SignUp = () => {
   const clearMessages = (msg) => {
     setTimeout(() => {
       if (msg === "success") {
-        setMsg("")
+        setMsg("");
       } else {
-        setError("")
+        setError("");
       }
     }, 8000);
   };
@@ -42,7 +42,8 @@ const SignUp = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3008/send-registration-link",
+        "https://server-theta-pink.vercel.app/send-registration-link",
+        // "http://localhost:3008/send-registration-link",
         {
           email,
           password,
