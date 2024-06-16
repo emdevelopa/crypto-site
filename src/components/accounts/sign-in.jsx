@@ -100,7 +100,7 @@ const SignIn = () => {
         ""
       )}
       <img src={shortLogo} alt="" className="signLog h-[4em]" />
-      <h4 className="signTopic">Log in to Prime</h4>
+      <h4 className="signTopic">Log in to TraderAY</h4>
       <form onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
         {msg && <p className="text-green-600">{msg}</p>}

@@ -110,7 +110,7 @@ const SignUp = () => {
         ""
       )}
       <img src={shortLogo} alt="" className="signLog h-[4em]" />
-      <h4 className="signTopic">Create your Prime account</h4>
+      <h4 className="signTopic">Create your TraderAY</h4>
       <form ref={form} onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
         {msg && <p className="text-green-600">{msg}</p>}
