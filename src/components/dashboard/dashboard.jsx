@@ -1,27 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./dashboard.css";
 import UserPic from "../../assets/user.jpg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 const Dashboard = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const query = useQuery();
 
+  const tok = query.get("tok");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
 
-  const signOut=() => {
-    navigate("/login")
-  }
+  const signOut = () => {
+    navigate("/login");
+  };
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3008/getDetails",
+        {
+          tok,
+        },
+        {
+          withCredentials: true, // This ensures cookies and other credentials are sent with the request
+        }
+      );
+      if (response.status === 200) {
+        console.log(response);
+        // logintoDashboard(response.data.id);
+        // addTokenToForm(formRef, token);
+
+        // emailjs
+        //   .sendForm("service_xdedwab", "template_ay7g99m", formRef, {
+        //     publicKey: "AcBnCP-k-O6JagINR",
+        //   })
+        //   .then(
+        //     () => {
+        //       console.log("SUCCESS!");
+        //     },
+        //     (error) => {
+        //       console.log("FAILED...", error.text);
+        //     }
+        //   );
+      }
+      // console.log(response);
+      // const token = response.data.token;
+      // localStorage.setItem("token", token);
+
+      // setMsg(response.data.msg);
+      // handle success (e.g., redirect to login page or show a success message)
+    } catch (err) {
+      console.log(err.response?.data.message);
+      // setError(err.response?.data.message);
+    } finally {
+      console.log("loading completed");
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="dashBox">
       <h1 className="topTxt">Dashboard</h1>
       <div className="profileBox">
-        <button className="logout" onClick={signOut}>Logout</button>
+        <button className="logout" onClick={signOut}>
+          Logout
+        </button>
         {/* <img src={UserPic} alt="" /> */}
         <div className="w-[8em] h-[8em] rounded bg-black flex items-center justify-center">
           <h1 className="text-orange-500 font-bold text-[75px]">O</h1>
@@ -51,16 +106,10 @@ const Dashboard = () => {
             <div className="cryptoInfo">
               <div className="">
                 <h2 className="">Crypto Details</h2>
-                <p className="">
-                  Kindly make your transaction to the below
-                </p>
+                <p className="">Kindly make your transaction to the below</p>
                 <div className="">
-                  <label className="">
-                    Recipient Address:
-                  </label>
-                  <p className="">
-                    0x123456789abcdef123456789abcdef123456789a
-                  </p>
+                  <label className="">Recipient Address:</label>
+                  <p className="">0x123456789abcdef123456789abcdef123456789a</p>
                 </div>
                 {/* <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2">
@@ -74,10 +123,7 @@ const Dashboard = () => {
               </label>
               <p className="bg-gray-200 p-2 rounded">0.01 ETH</p>
             </div> */}
-                <button
-                  onClick={togglePopup}
-                  className="closeBtn"
-                >
+                <button onClick={togglePopup} className="closeBtn">
                   Close
                 </button>
               </div>
