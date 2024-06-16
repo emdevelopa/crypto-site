@@ -5,8 +5,8 @@ import pic from "../../assets/footprint.svg";
 const HomeComp4 = () => {
   return (
     <div className="HomeComp">
-      <h2>
-      Comprehensive
+      <h2 className="text-[4em] max-md-[400px]:text-[3em]">
+        Comprehensive
         <br />
         Learning Hub
       </h2>

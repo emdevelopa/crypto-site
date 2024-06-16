@@ -4,11 +4,12 @@ import axios from "axios";
 import shortLogo from "../../assets/symbol_white.svg";
 import "./signInOut.css";
 import { useNavigate } from "react-router-dom";
+import { ThreeDot } from "react-loading-indicators";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
   // const form = useRef();
@@ -38,9 +39,10 @@ const SignIn = () => {
     //   return;
     // }
     try {
+      setLoading(true);
       const response = await axios.post(
-        "https://server-theta-pink.vercel.app/login",
-        // "http://localhost:3008/login",
+        // "https://server-theta-pink.vercel.app/login",
+        "http://localhost:3008/login",
         {
           email,
           password,
@@ -77,12 +79,26 @@ const SignIn = () => {
       console.log(err.response?.data.message);
       setError(err.response?.data.message);
     } finally {
+      setLoading(false);
       console.log("loading completed");
     }
   };
 
   return (
     <div className="signBox">
+      {loading ? (
+        <div className="absolute bg-[#000000e1] top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+          <ThreeDot
+            variant="brick-stack"
+            color="#32cd32"
+            size="large"
+            text="loging in"
+            textColor="white"
+          />
+        </div>
+      ) : (
+        ""
+      )}
       <img src={shortLogo} alt="" className="signLogo" />
       <h4 className="signTopic">Log in to Prime</h4>
       <form onSubmit={handleSignUp}>

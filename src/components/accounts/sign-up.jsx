@@ -3,11 +3,13 @@ import axios from "axios";
 import emailjs from "@emailjs/browser";
 import shortLogo from "../../assets/symbol_white.svg";
 import "./signInOut.css";
+import { ThreeDot } from "react-loading-indicators";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
   const form = useRef();
@@ -41,9 +43,10 @@ const SignUp = () => {
       return;
     }
     try {
+      setLoading(true);
       const response = await axios.post(
-        "https://server-theta-pink.vercel.app/send-registration-link",
-        // "http://localhost:3008/send-registration-link",
+        // "https://server-theta-pink.vercel.app/send-registration-link",
+        "http://localhost:3008/send-registration-link",
         {
           email,
           password,
@@ -64,6 +67,8 @@ const SignUp = () => {
             (response) => {
               setMsg("verification link sent to Email");
               clearMessages("success");
+              setLoading(false);
+
               console.log("SUCCESS!", response);
             },
             (error) => {
@@ -84,12 +89,26 @@ const SignUp = () => {
 
       // setError("Sign-up failed");
     } finally {
+      setLoading(false);
       console.log("loading completed");
     }
   };
 
   return (
     <div className="signBox">
+      {loading ? (
+        <div className="absolute bg-[#000000e1] top-0 bottom-0 left-0 right-0 flex justify-center items-center">
+          <ThreeDot
+            variant="brick-stack"
+            color="#32cd32"
+            size="large"
+            text="please wait"
+            textColor="white"
+          />
+        </div>
+      ) : (
+        ""
+      )}
       <img src={shortLogo} alt="" className="signLogo" />
       <h4 className="signTopic">Create your Prime account</h4>
       <form ref={form} onSubmit={handleSignUp}>
