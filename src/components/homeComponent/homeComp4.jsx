@@ -1,6 +1,6 @@
 import React from "react";
 import "./homeComp.css";
-import pic from "../../assets/footprint.svg";
+import pic from "../../assets/4th.png";
 
 const HomeComp4 = () => {
   return (
@@ -10,7 +10,11 @@ const HomeComp4 = () => {
         <br />
         Learning Hub
       </h2>
-      <img className="pic" src={pic} alt="" />
+      <img
+        className="w-[70%] h-[50em] my-[30px] max-md-[400px]:h-[28em] max-md-[400px]:w-full"
+        src={pic}
+        alt=""
+      />
       <p>
         Learn at your own pace with our online
         <br />
