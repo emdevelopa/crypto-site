@@ -1,39 +1,45 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import shortLogo from "../../assets/symbol_white.svg";
 import "./signInOut.css";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
-  const form = useRef();
+  // const form = useRef();
+  const navigate = useNavigate();
 
-  const formRef = form.current;
-
-  const addTokenToForm = (form, token) => {
-    let tokenInput = form.querySelector('input[name="token"]');
-    if (!tokenInput) {
-      tokenInput = document.createElement("input");
-      tokenInput.type = "hidden";
-      tokenInput.name = "token";
-      form.appendChild(tokenInput);
-    }
-    tokenInput.value = token;
+  const logintoDashboard = (id) => {
+    navigate(`/dashboard?tok=${id}`);
   };
+
+  // const formRef = form.current;
+
+  // const addTokenToForm = (form, token) => {
+  //   let tokenInput = form.querySelector('input[name="token"]');
+  //   if (!tokenInput) {
+  //     tokenInput = document.createElement("input");
+  //     tokenInput.type = "hidden";
+  //     tokenInput.name = "token";
+  //     form.appendChild(tokenInput);
+  //   }
+  //   tokenInput.value = token;
+  // };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
+    // if (password !== confirmPassword) {
+    //   setError("Passwords do not match");
+    //   return;
+    // }
     try {
       const response = await axios.post(
-        "http://localhost:3008/send-registration-link",
+        "http://localhost:3008/login",
         {
           email,
           password,
@@ -42,9 +48,9 @@ const SignIn = () => {
           withCredentials: true, // This ensures cookies and other credentials are sent with the request
         }
       );
-      if (response.ok) {
+      if (response.status === 200) {
         console.log(response);
-
+        logintoDashboard(response.data.id);
         // addTokenToForm(formRef, token);
 
         // emailjs
@@ -67,8 +73,10 @@ const SignIn = () => {
       setMsg(response.data.msg);
       // handle success (e.g., redirect to login page or show a success message)
     } catch (err) {
-      console.log(err);
-      setError("Sign-up failed");
+      console.log(err.response?.data.message);
+      setError(err.response?.data.message);
+    } finally {
+      console.log("loading completed");
     }
   };
 
@@ -76,7 +84,7 @@ const SignIn = () => {
     <div className="signBox">
       <img src={shortLogo} alt="" className="signLogo" />
       <h4 className="signTopic">Log in to Prime</h4>
-      <form ref={form} onSubmit={handleSignUp}>
+      <form onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
         {msg && <p className="text-green-600">{msg}</p>}
         <input
@@ -98,7 +106,7 @@ const SignIn = () => {
         <button type="submit">Sign In</button>
         <span className="signSpan">
           Don't have an account yet?{" "}
-          <a href="register" className="signSpan">
+          <a href="register" className="signSan" style={{ color: "#3fa5ff" }}>
             Register
           </a>
         </span>

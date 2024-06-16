@@ -119,7 +119,7 @@ const SignUp = () => {
         <button type="submit">Sign Up</button>
         <span className="signSpan">
           Already have an account yet?{" "}
-          <a href="login" className="signSpan">
+          <a href="login" className="signSpan" style={{ color: "#3fa5ff" }}>
             login here
           </a>
         </span>
