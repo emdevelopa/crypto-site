@@ -55,6 +55,17 @@ const Verify = () => {
         <img src={failed} alt="failed" className="w-[4em]" />
       )}
       <p className="text-white">{message}</p>
+      <br />
+      {success ? (
+        <a
+          className="text-[#3fa5ff] hover:underline"
+          href="https://crypto-site-sepia.vercel.app/login"
+        >
+          Login here
+        </a>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
