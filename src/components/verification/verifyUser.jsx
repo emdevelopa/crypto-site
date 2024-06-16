@@ -12,7 +12,11 @@ const Verify = () => {
     return new URLSearchParams(useLocation().search);
   };
 
-  const fetchData = async (token) => {
+  // Use useQuery directly in the component
+  const urlParams = useQuery();
+  const token = urlParams.get("tok");
+
+  const fetchData = async () => {
     if (token) {
       try {
         const response = await axios.post(
@@ -40,9 +44,7 @@ const Verify = () => {
   };
 
   useEffect(() => {
-    const urlParams = useQuery();
-    const token = urlParams.get("tok");
-    fetchData(token);
+    fetchData();
   }, []); // Empty dependency array means this effect runs once when the component mounts
 
   return (
