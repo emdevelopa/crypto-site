@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import successful from "../../assets/successful.png";
 import failed from "../../assets/failed.png";
+import { useLocation } from "react-router-dom";
 
 const Verify = () => {
   const [message, setMessage] = useState("Loading...");
   const [success, setSuccess] = useState(false);
-
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
   // Function to fetch data
+  const urlParams = useQuery();
   const fetchData = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("tok");
     if (token) {
       try {
