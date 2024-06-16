@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 // import emailjs from "@emailjs/browser";
-import shortLogo from "../../assets/symbol_white.svg";
+import shortLogo from "../../assets/traderAY.jpeg";
 import "./signInOut.css";
 import { useNavigate } from "react-router-dom";
 import { ThreeDot } from "react-loading-indicators";
@@ -99,7 +99,7 @@ const SignIn = () => {
       ) : (
         ""
       )}
-      <img src={shortLogo} alt="" className="signLogo" />
+      <img src={shortLogo} alt="" className="signLog h-[4em]" />
       <h4 className="signTopic">Log in to Prime</h4>
       <form onSubmit={handleSignUp}>
         {error && <p className="text-red-500">{error}</p>}
