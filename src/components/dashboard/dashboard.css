@@ -75,11 +75,11 @@
   font-size: small;
 }
 .userInfo .cryptoInfo {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   text-align: left;
   margin: 20px 0;
-  transition: 400ms all ease;
+  transition: 400ms all ease; */
 }
 .cryptoInfo h2 {
   margin-bottom: 20px;

@@ -1,130 +1,136 @@
-.paymentContain{
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.paymentContain {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.paymentBox{
-    width: 370px;
-    height: 550px;
-    display: flex;
-    margin: 20px;
-    flex-direction: column;
-    overflow: hidden;
-    background: linear-gradient(180deg, #5e69d2, transparent);
-    border-radius: 10px;
-    padding: 1px;
+.paymentBox {
+  width: 370px;
+  /* height: 550px; */
+  display: flex;
+  margin: 20px;
+  flex-direction: flex;
+  overflow: hidden;
+  background: linear-gradient(180deg, #5e69d2, transparent);
+  border-radius: 10px;
+  padding: 1px;
 }
-.paymentBox.middle{
-    background: linear-gradient(180deg, #5e69d2, transparent);
+.paymentBox.middle {
+  background: linear-gradient(180deg, #5e69d2, transparent);
 }
-.paymentBox.middle .paymentBoxInner{
-    background: #232555;
+.paymentBox.middle .paymentBoxInner {
+  background: #232555;
 }
-.paymentBoxInner{
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    position: relative;
-    background: #131432;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+.paymentBoxInner {
+  width: 100%;
+  /* height: 100%; */
+  padding: 30px;
+  position: relative;
+  background: #131432;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
-.paymentBoxInner p{
-    color: rgb(255, 255, 255, 0.35);
-    font-size: large;
-    margin-top: 30px;
+.paymentBoxInner p {
+  color: rgb(255, 255, 255, 0.35);
+  font-size: large;
+  margin-top: 30px;
 }
-.paymentBoxInner h2{
-    font-size: xx-large;
-    margin: 20px;
-    color: #fff;
+.paymentBoxInner h2 {
+  font-size: xx-large;
+  margin: 20px;
+  color: #fff;
 }
-.paymentBoxInner .billed{
-    color: rgb(255, 255, 255, 0.25);
-    margin-bottom: 40px;
-    margin-top: 20px;
-    font-size: small;
+.paymentBoxInner .billed {
+  color: rgb(255, 255, 255, 0.25);
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: 14px;
 }
-.paymentBoxInner .paymentInfo{
-    width: 100%;
-    text-align: left;
-    color: #fff;
-    padding-left: 70px;
-    padding-bottom: 15px;
-    font-size: small;
+.paymentBoxInner .paymentInfo {
+  display: flex;
+  width: 100%;
+  color: #fff;
+  padding-left: 70px;
+  padding-bottom: 15px;
+  font-size: small;
 }
-.paymentInfo img{
-    height: 20px;
-    margin-right: 10px;
-    filter: invert(32%) sepia(40%) saturate(1425%) hue-rotate(199deg) brightness(98%) contrast(89%);
+.paymentInfo img {
+  height: 20px;
+  margin-right: 10px;
+  filter: invert(32%) sepia(40%) saturate(1425%) hue-rotate(199deg)
+    brightness(98%) contrast(89%);
 }
-.paymentBoxInner .payBtn{
-    margin-top: 30px;
-    padding: 15px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
+.paymentBoxInner .payBtn {
+  margin-top: 25px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* background: #000; */
+  background: #465ab9;
+  color: #fff;
 }
-.paymentBox.middle .payBtn{
-    background: #465ab9;
-    color: #fff;
+.paymentBoxInner .payBtn:hover {
+  background-color: #4659b980;
 }
-
+.paymentBox .middle .payBtn {
+  background: #465ab9;
+  color: #fff;
+}
 
 @media screen and (max-width: 1024px) {
-    .paymentBox{
-        width: 350px;
-        height: 500px;
-        display: flex;
-        margin: 10px;
-    }    
-    .paymentBoxInner p{
-        font-size: small;
-        margin-top: 20px;
-    }    
-    .paymentBoxInner h2{
-        font-size: x-large;
-        margin: 10px;
-    }
-    .paymentBoxInner .billed{
-        margin-bottom: 30px;
-        margin-top: 10px;
-        font-size: x-small;
-    }
-    .paymentBoxInner .paymentInfo{
-        padding-left: 60px;
-        padding-bottom: 10px;
-        font-size: small;
-    }
-    .paymentInfo img{
-        height: 15px;
-        margin-right: 5px;
-    }    
+  .paymentBox {
+    width: 350px;
+    /* height: 500px; */
+    display: flex;
+    margin: 10px;
+  }
+  .paymentBoxInner p {
+    font-size: small;
+    margin-top: 20px;
+  }
+  .paymentBoxInner h2 {
+    font-size: x-large;
+    margin: 10px;
+  }
+  .paymentBoxInner .billed {
+    margin-bottom: 30px;
+    margin-top: 10px;
+    font-size: x-small;
+  }
+  .paymentBoxInner .paymentInfo {
+    padding-left: 60px;
+    padding-bottom: 10px;
+    font-size: small;
+  }
+  .paymentInfo img {
+    height: 15px;
+    margin-right: 5px;
+  }
 }
 
 @media screen and (max-width: 900px) {
-    .paymentBox{
-        width: 300px;
-        height: 450px;
-        display: flex;
-        margin: 10px;
-    }    
-    .paymentBoxInner p{
-        font-size: x-small;
-        margin-top: 20px;
-    }    
-    .paymentBoxInner .paymentInfo{
-        padding-left: 50px;
-        padding-bottom: 10px;
-        font-size: small;
-    }
-    .paymentBoxInner .payBtn{
-        margin-top: 30px;
-        padding: 10px;
-        border-radius: 20px;
-    }
+  .paymentBox {
+    width: 300px;
+    /* height: 450px; */
+    display: flex;
+    margin: 10px;
+  }
+  .paymentBoxInner p {
+    font-size: x-small;
+    margin-top: 20px;
+  }
+  .paymentBoxInner .paymentInfo {
+    padding-left: 50px;
+    padding-bottom: 10px;
+    font-size: small;
+  }
+  .paymentBoxInner .payBtn {
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 20px;
+  }
 }
