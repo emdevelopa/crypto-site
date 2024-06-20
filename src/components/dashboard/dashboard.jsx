@@ -33,8 +33,8 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        // "https://server-theta-pink.vercel.app/getDetails",
-        "http://localhost:3008/getDetails",
+        "https://server-theta-pink.vercel.app/getDetails",
+        // "http://localhost:3008/getDetails",
         {
           tok,
         },

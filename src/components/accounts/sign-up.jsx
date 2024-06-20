@@ -45,8 +45,8 @@ const SignUp = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        // "https://server-theta-pink.vercel.app/send-registration-link",
-        "http://localhost:3008/send-registration-link",
+        "https://server-theta-pink.vercel.app/send-registration-link",
+        // "http://localhost:3008/send-registration-link",
         {
           email,
           password,
