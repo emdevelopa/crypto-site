@@ -19,19 +19,19 @@ const Navbar = () => {
       <div className="navBar">
         <div className="navLeft">
           <img className="loo w-[10em]" src={logoPng} alt="" />
-          <a href="#" className="PCL">
+          <a href="#Mentorshhip" className="PCL">
             Mentorship
           </a>
-          <a href="#" className="PCL">
+          <a href="#Insights" className="PCL">
             Insight
           </a>
-          <a href="#" className="PCL">
+          <a href="#hub" className="PCL">
             Learning Hub
           </a>
-          <a href="#" className="PCL">
+          {/* <a href="#" className="PCL">
             Tools
-          </a>
-          <a href="#" className="PCL">
+          </a> */}
+          <a href="#pricing" className="PCL">
             Pricing
           </a>
         </div>

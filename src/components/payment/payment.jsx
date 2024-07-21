@@ -4,7 +4,7 @@ import checkSvg from "../../assets/check-svgrepo-com.svg";
 
 const Payment = (props) => {
   return (
-    <div className="paymentContain">
+    <div className="paymentContain" id="pricing">
       <div className="paymentBox">
         <div className="paymentBoxInner">
           <p>Monthly</p>
@@ -40,7 +40,7 @@ const Payment = (props) => {
               className="mt-4 bg-[#af4545c6] cursor-pointer hover:bg-[#b71919] text-white font-bold py-[0.5em] px-[3em] rounded-lg"
               onClick={props.closePopUp}
             >
-              Cancle
+              Terminate process
             </h1>
           ) : (
             ""

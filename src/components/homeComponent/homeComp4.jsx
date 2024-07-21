@@ -4,7 +4,7 @@ import pic from "../../assets/4th.png";
 
 const HomeComp4 = () => {
   return (
-    <div className="HomeComp">
+    <div className="HomeComp" id="hub">
       <h2 className="text-[4em] max-md-[400px]:text-[3em]">
         Comprehensive
         <br />

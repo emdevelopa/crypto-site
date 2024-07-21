@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./dashboard.css";
-import UserPic from "../../assets/user.jpg";
+// import UserPic from "../../assets/user.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Payment from "../payment/payment";
@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isAuthorize, setIsAuthorize] = useState(false);
   const [email, setEmail] = useState("loading...");
+  const [subscription, setSubscription] = useState(false);
   const navigate = useNavigate();
 
   const query = useQuery();
@@ -33,8 +34,8 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        "https://server-theta-pink.vercel.app/getDetails",
-        // "http://localhost:3008/getDetails",
+        // "https://server-theta-pink.vercel.app/getDetails",
+        "http://localhost:3008/getDetails",
         {
           tok,
         },
@@ -45,6 +46,8 @@ const Dashboard = () => {
       if (response.status === 200) {
         console.log(response);
         setEmail(response.data.userInfo.email);
+        // console.log(response.data.userInfo);
+        setSubscription(response.data.userInfo.subscription);
         // logintoDashboard(response.data.id);
         // addTokenToForm(formRef, token);
 
@@ -98,7 +101,11 @@ const Dashboard = () => {
                     Recipient Address:
                   </label>
                   <p className="">0x123456789abcdef123456789abcdef123456789a</p>
-                  <button className="bg-white text-black rounded-md px-1">copy address</button><br /><br />
+                  <button className="bg-white text-black rounded-md px-1">
+                    copy address
+                  </button>
+                  <br />
+                  <br />
                   <label className="font-bold text-[#00a6ff]">Network:</label>
                   <p className="">ERC20</p>
                 </div>
@@ -144,18 +151,22 @@ const Dashboard = () => {
               Click the subscribe button to subscribe to discord server.
             </p>
             <div className="profileBtnBox">
-              <button onClick={togglePopup} className="subBtn">
+             
+              {!subscription ? (
+                <button onClick={togglePopup} className="subBtn">
                 Subscribe
               </button>
-              <br />
-              <button
-                className="serverBtn"
-                onClick={() =>
-                  (window.location.href = "https://discord.gg/JsVyFzYW")
-                }
-              >
-                Got to server
-              </button>
+              // <br />
+              ) : (
+                 <button
+                  className="serverBtn"
+                  onClick={() =>
+                    (window.location.href = "https://discord.gg/JsVyFzYW")
+                  }
+                >
+                  Got to server
+                </button>
+              )}
             </div>
           </div>
         </div>

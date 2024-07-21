@@ -4,7 +4,7 @@ import pic from "../../assets/image00.png";
 
 const HomeComp3 = () => {
   return (
-    <div className="HomeComp">
+    <div className="HomeComp" id="Insights">
       <h2 className="text-[4em] max-md-[400px]:text-[3em]">
         Daily Trades
         <br />

@@ -4,7 +4,7 @@ import pic from "../../assets/chat.jpg"
 
 const HomeComp2 = () => {
   return (
-    <div className="HomeComp">
+    <div className="HomeComp" id="Mentorshhip">
       <h2 className="text-[4em] max-md-[400px]:text-[3em]">
         Unlike any Group
         <br />

@@ -4,7 +4,7 @@ import pic from "../../assets/image3.png"
 
 const HomeComp1 = () => {
   return (
-    <div className="HomeComp">
+    <div className="HomeComp" >
       <button className="affiliate">Become an Affiliate</button>
       <h2 className="text-[4em] max-md-[400px]:text-[3em]">
         We Make <br />
