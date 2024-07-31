@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./dashboard.css";
-// import UserPic from "../../assets/user.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Payment from "../payment/payment";
+import emailjs from "@emailjs/browser";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -14,6 +14,10 @@ const Dashboard = () => {
   const [isAuthorize, setIsAuthorize] = useState(false);
   const [email, setEmail] = useState("loading...");
   const [subscription, setSubscription] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [txid, setTxid] = useState("");
+  const [error, setError] = useState("");
+  const formRef = useRef();
   const navigate = useNavigate();
 
   const query = useQuery();
@@ -31,48 +35,48 @@ const Dashboard = () => {
     navigate("/login");
   };
 
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText("0x123456789abcdef123456789abcdef123456789a");
+    alert("Address copied to clipboard!");
+  };
+
+  const handlePaymentClick = () => {
+    if (!txid) {
+      setError("Transaction ID (TXID) cannot be empty");
+    } else {
+      console.log("Payment confirmed with TXID:", txid);
+
+      emailjs
+        .sendForm("service_xdedwab", "template_uejuj3o", formRef.current, {
+          publicKey: "r0vWcKkL53vCwfcvQ",
+        })
+        .then(
+          () => {
+            console.log("SUCCESS!");
+            setSuccessMsg("An Email will be send to you shortly.");
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+          }
+        );
+      setError("");
+    }
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        // "https://server-theta-pink.vercel.app/getDetails",
-        "http://localhost:3008/getDetails",
-        {
-          tok,
-        },
-        {
-          withCredentials: true, // This ensures cookies and other credentials are sent with the request
-        }
+        // "http://localhost:3008/getDetails",
+        "https://server-theta-pink.vercel.app/getDetails",
+        { tok },
+        { withCredentials: true }
       );
       if (response.status === 200) {
-        console.log(response);
         setEmail(response.data.userInfo.email);
-        // console.log(response.data.userInfo);
         setSubscription(response.data.userInfo.subscription);
-        // logintoDashboard(response.data.id);
-        // addTokenToForm(formRef, token);
-
-        // emailjs
-        //   .sendForm("service_xdedwab", "template_ay7g99m", formRef, {
-        //     publicKey: "AcBnCP-k-O6JagINR",
-        //   })
-        //   .then(
-        //     () => {
-        //       console.log("SUCCESS!");
-        //     },
-        //     (error) => {
-        //       console.log("FAILED...", error.text);
-        //     }
-        //   );
       }
-      // console.log(response);
-      // const token = response.data.token;
-      // localStorage.setItem("token", token);
-
-      // setMsg(response.data.msg);
-      // handle success (e.g., redirect to login page or show a success message)
     } catch (err) {
       console.log(err.response?.data.message);
-      // setError(err.response?.data.message);
     } finally {
       console.log("loading completed");
     }
@@ -81,6 +85,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <>
       {isPopupVisible ? (
@@ -92,8 +97,8 @@ const Dashboard = () => {
             closePopUp={togglePopup}
           />
           {isAuthorize && (
-            <div className="cryptoInfo overflow-y-scrol text-white absolute top-0  flex justify-center w-full h-screen ">
-              <div className="bg-[#000000] w-fit flex items-center  flex-col justify-center p-4">
+            <div className="cryptoInfo overflow-y-scrol text-white absolute top-0 flex justify-center w-full h-screen">
+              <div className="bg-[#000000] w-fit flex items-center flex-col justify-center p-4">
                 <h2 className="">Crypto Details</h2>
                 <p className="">Kindly make your transaction to the below</p>
                 <div className="">
@@ -101,28 +106,37 @@ const Dashboard = () => {
                     Recipient Address:
                   </label>
                   <p className="">0x123456789abcdef123456789abcdef123456789a</p>
-                  <button className="bg-white text-black rounded-md px-1">
-                    copy address
+                  <button
+                    className="bg-white text-black rounded-md px-1"
+                    onClick={handleCopyAddress}
+                  >
+                    Copy Address
                   </button>
                   <br />
                   <br />
                   <label className="font-bold text-[#00a6ff]">Network:</label>
                   <p className="">ERC20</p>
                 </div>
-                {/* <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2">
-                Amount:
-              </label>
-              <p className="bg-gray-200 p-2 rounded">0.5 ETH</p>
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2">
-                Transaction Fee:
-              </label>
-              <p className="bg-gray-200 p-2 rounded">0.01 ETH</p>
-            </div> */}
-                
-                <button className="bg-[#fc931a] p-2 rounded-lg">I have paid </button>
+
+                <form ref={formRef}>
+                  <input
+                    type="text"
+                    name="txid"
+                    placeholder="Enter your Transaction ID (TXID)"
+                    className="bg-[#7e7e7e32] w-full p-2"
+                    value={txid}
+                    onChange={(e) => setTxid(e.target.value)}
+                  />
+                  <input type="hidden" name="to_email" value={email} />
+                </form>
+                {error && <p className="text-red-500">{error}</p>}
+                {successMsg && <p className="text-green-500">Payment Confirmation Processing...<br/> {successMsg}</p>}
+                <button
+                  className="bg-[#fc931a] p-2 rounded-lg mt-3"
+                  onClick={handlePaymentClick}
+                >
+                  I have paid
+                </button>
                 <button onClick={toggleAuthorize} className="closeBtn">
                   Close
                 </button>
@@ -139,7 +153,7 @@ const Dashboard = () => {
           <button className="logout" onClick={signOut}>
             Logout
           </button>
-          {/* <img src={UserPic} alt="" /> */}
+
           <div className="w-[8em] h-[8em] rounded bg-black flex items-center justify-center">
             <h1 className="text-orange-500 font-bold text-[75px]">
               {email.slice(0, 1).toUpperCase()}
@@ -158,7 +172,6 @@ const Dashboard = () => {
                   Subscribe
                 </button>
               ) : (
-                // <br />
                 <button
                   className="serverBtn"
                   onClick={() =>

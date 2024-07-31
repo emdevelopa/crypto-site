@@ -61,7 +61,7 @@ const SignUp = () => {
 
         emailjs
           .sendForm("service_xdedwab", "template_ay7g99m", formRef, {
-            publicKey: "AcBnCP-k-O6JagINR",
+            publicKey: "r0vWcKkL53vCwfcvQ",
           })
           .then(
             (response) => {
@@ -70,6 +70,7 @@ const SignUp = () => {
               setLoading(false);
 
               console.log("SUCCESS!", response);
+              setLoading(false);
             },
             (error) => {
               console.log("FAILED...", error.text);
@@ -88,8 +89,8 @@ const SignUp = () => {
       clearMessages("error");
 
       // setError("Sign-up failed");
-    } finally {
       setLoading(false);
+    } finally {
       console.log("loading completed");
     }
   };
