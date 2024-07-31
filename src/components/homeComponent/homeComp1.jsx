@@ -14,7 +14,7 @@ const HomeComp1 = () => {
         Meet the new standard for trading education <br />
         Guided mentorship, online courses, and live classes
       </p>
-      <button className="start">Get Started</button>
+      <a href='/register' className="start">Get Started</a>
       <img
         className="w-[70%] h-[50em] my-[30px] max-md-[400px]:h-[28em] max-md-[400px]:w-full"
         src={pic}

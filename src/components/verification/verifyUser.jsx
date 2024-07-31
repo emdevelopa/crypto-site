@@ -20,8 +20,8 @@ const Verify = () => {
     if (token) {
       try {
         const response = await axios.post(
-          // "https://server-theta-pink.vercel.app/signup",
-          "http://localhost:3008/signup",
+          "https://server-theta-pink.vercel.app/signup",
+          // "http://localhost:3008/signup",
           { token },
           { withCredentials: true }
         );

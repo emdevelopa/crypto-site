@@ -93,7 +93,7 @@ const Dashboard = () => {
           />
           {isAuthorize && (
             <div className="cryptoInfo overflow-y-scrol text-white absolute top-0  flex justify-center w-full h-screen ">
-              <div className="bg-[#000000] w-fit flex items-center  flex-col justify-center">
+              <div className="bg-[#000000] w-fit flex items-center  flex-col justify-center p-4">
                 <h2 className="">Crypto Details</h2>
                 <p className="">Kindly make your transaction to the below</p>
                 <div className="">
@@ -121,6 +121,8 @@ const Dashboard = () => {
               </label>
               <p className="bg-gray-200 p-2 rounded">0.01 ETH</p>
             </div> */}
+                
+                <button className="bg-[#fc931a] p-2 rounded-lg">I have paid </button>
                 <button onClick={toggleAuthorize} className="closeBtn">
                   Close
                 </button>
@@ -151,14 +153,13 @@ const Dashboard = () => {
               Click the subscribe button to subscribe to discord server.
             </p>
             <div className="profileBtnBox">
-             
               {!subscription ? (
                 <button onClick={togglePopup} className="subBtn">
-                Subscribe
-              </button>
-              // <br />
+                  Subscribe
+                </button>
               ) : (
-                 <button
+                // <br />
+                <button
                   className="serverBtn"
                   onClick={() =>
                     (window.location.href = "https://discord.gg/JsVyFzYW")
