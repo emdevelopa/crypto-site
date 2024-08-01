@@ -8,7 +8,11 @@ const Payment = (props) => {
       <div className="paymentBox">
         <div className="paymentBoxInner">
           <p>Monthly</p>
-          <h2>0.000015<sub className="text-orange-500 text-[12px] font-bold">BTC</sub> per month</h2>
+          <h2>
+            0.00341
+            <sub className="text-orange-500 text-[12px] font-bold">BTC</sub> per
+            month
+          </h2>
           <span className="billed">Billed Monthly</span>
 
           <span className="paymentInfo">Get started with Monthly</span>

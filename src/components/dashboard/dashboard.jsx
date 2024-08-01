@@ -115,7 +115,7 @@ const Dashboard = () => {
                   <br />
                   <br />
                   <label className="font-bold text-[#00a6ff]">Network:</label>
-                  <p className="">ERC20</p>
+                  <p className="">TRC20</p>
                 </div>
 
                 <form ref={formRef}>
